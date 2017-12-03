@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <script type="text/javascript" src="codebride.js"></script>
+</head>
+
+<body>
+
+    <h1 style="text-align:center"> Twitter Poster</h1>
+    <center>
+        <textarea type="text" name="txtJob" id="txtJob" value="software engineer" rows="4" cols="50" style="margin-top:50px"></textarea>
+        <div>
+            <a href="https://twitter.com/esraahus93">
+                <button onclick="tweet()" type="button" style="width:150px;height:30px;margin-top:10px;font-weight:bold ;font-size:16px;border-radius:25px">
+                    tweet</button>
+            </a>
+        </div>
+    </center>
+
+    <script type="text/javascript">
+
+        var cb = new Codebird;
+        cb.setConsumerKey("aipWkJx95L2yxLw1Ud7tJggaY", "8e9LBVAuLDrULNanjxs5UQj4DMRnQyngd5ERxWIoALZlJos3vu");
+        cb.setToken("929748215058042883-eVIkYLyUIe6Uzm3gKiaXMTCSrQMUMNd", "TaXvz7PhV9cOcrolPtcy4aBhXrpuXc0jjdG0Urouvz4Zo");
+        function tweet() {
+            var jobValue = document.getElementById('txtJob').value;
+            document.getElementById('txtJob').innerHTML = jobValue
+
+            var params = {
+                status: jobValue
+            };
+            cb.__call(
+                "statuses_update",
+                params,
+                function (reply) {
+                    // console.log(reply)
+                }
+            );
+        }
+
+    </script>
+</body>
+
+</html>
